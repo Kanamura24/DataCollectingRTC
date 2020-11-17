@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rtc:RtcProfile rtc:version="0.2" rtc:id="RTC:kanamura:Categor:DataCollectingRTC:1.0.0" xmlns:rtcExt="http://www.openrtp.org/namespaces/rtc_ext" xmlns:rtcDoc="http://www.openrtp.org/namespaces/rtc_doc" xmlns:rtc="http://www.openrtp.org/namespaces/rtc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <rtc:BasicInfo xsi:type="rtcExt:basic_info_ext" rtcExt:saveProject="DataCollectingRTC" rtc:updateDate="2015-12-24T22:41:54+09:00" rtc:creationDate="2015-12-21T15:43:47+09:00" rtc:version="1.0.0" rtc:vendor="kanamura" rtc:maxInstances="1" rtc:executionType="PeriodicExecutionContext" rtc:executionRate="1000.0" rtc:description="DataCollectingRTC" rtc:category="Categor" rtc:componentKind="DataFlowComponent" rtc:activityType="PERIODIC" rtc:componentType="STATIC" rtc:name="DataCollectingRTC">
+        <rtcDoc:Doc rtcDoc:reference="" rtcDoc:license="GPL, LGPL" rtcDoc:creator="Sugar Sweet Robotics (ysuga@ysuga.net)" rtcDoc:algorithm="" rtcDoc:inout="" rtcDoc:description="Manipulator Common Interface (SI unit version 1.0) Test RT-component. This is a console application for testing ManipulatorCommonInterface. "/>
+        <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
+        <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
+    </rtc:BasicInfo>
+    <rtc:Actions>
+        <rtc:OnInitialize xsi:type="rtcDoc:action_status_doc" rtc:implemented="true"/>
+        <rtc:OnFinalize xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnStartup xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnShutdown xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnActivated xsi:type="rtcDoc:action_status_doc" rtc:implemented="true"/>
+        <rtc:OnDeactivated xsi:type="rtcDoc:action_status_doc" rtc:implemented="true"/>
+        <rtc:OnAborting xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnError xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnReset xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnExecute xsi:type="rtcDoc:action_status_doc" rtc:implemented="true"/>
+        <rtc:OnStateUpdate xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnRateChanged xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnAction xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+        <rtc:OnModeChanged xsi:type="rtcDoc:action_status_doc" rtc:implemented="false"/>
+    </rtc:Actions>
+    <rtc:DataPorts xsi:type="rtcExt:dataport_ext" rtcExt:position="LEFT" rtcExt:variableName="camera" rtc:unit="" rtc:subscriptionType="" rtc:dataflowType="" rtc:interfaceType="" rtc:idlFile="" rtc:type="Img::TimedCameraImage" rtc:name="camera" rtc:portType="DataInPort"/>
+    <rtc:ServicePorts xsi:type="rtcExt:serviceport_ext" rtcExt:position="RIGHT" rtc:name="manipMiddle">
+        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="manipMiddle" rtc:path="C:\Users\orochiPC\Documents\Development\ManipulatorCommonTest\idl" rtc:type="JARA_ARM::ManipulatorCommonInterface_Middle" rtc:idlFile="C:\Users\orochiPC\Documents\Development\ManipulatorCommonTest\idl\ManipulatorCommonInterface_MiddleLevel.idl" rtc:instanceName="JARA_ARM_ManipulatorCommonInterface_Middle" rtc:direction="Required" rtc:name="JARA_ARM_ManipulatorCommonInterface_Middle"/>
+    </rtc:ServicePorts>
+    <rtc:ServicePorts xsi:type="rtcExt:serviceport_ext" rtcExt:position="RIGHT" rtc:name="manipCommon">
+        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="manipCommon" rtc:path="\\OROCHI-PC\Users\orochiPC\Documents\Development\ManipulatorCommonTest\idl" rtc:type="JARA_ARM::ManipulatorCommonInterface_Common" rtc:idlFile="C:\Users\orochiPC\Documents\Development\ManipulatorCommonTest\idl\ManipulatorCommonInterface_Common.idl" rtc:instanceName="JARA_ARM_ManipulatorCommonInterface_Common" rtc:direction="Required" rtc:name="JARA_ARM_ManipulatorCommonInterface_Common"/>
+    </rtc:ServicePorts>
+    <rtc:Language xsi:type="rtcExt:language_ext" rtc:kind="C++"/>
+</rtc:RtcProfile>
