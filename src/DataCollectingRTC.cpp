@@ -185,7 +185,7 @@ RTC::ReturnCode_t DataCollectingRTC::onExecute(RTC::UniqueId ec_id)
      << std::setw(2) << std::setfill('0') << localNow->tm_sec
      << ".png";
 
-   coil::sleep(m_camera_wait_time);
+   coil::sleep(3.0);
    
    std::string filename = ss.str();
 
