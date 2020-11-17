@@ -250,6 +250,15 @@ class DataCollectingRTC
    */
   InPort<RTC::TimedFloatSeq> m_inIn;
 
+  RTC::TimedFloatSeq m_jointR;
+  /*!
+   */
+  InPort<RTC::TimedFloatSeq> m_jointRIn;
+
+  RTC::TimedFloatSeq m_jointL;
+  /*!
+   */
+  InPort<RTC::TimedFloatSeq> m_jointLIn;
   
   Img::TimedCameraImage m_camera;
   /*!

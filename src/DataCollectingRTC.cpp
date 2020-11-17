@@ -39,7 +39,9 @@ static const char* datacollectingrtc_spec[] =
 DataCollectingRTC::DataCollectingRTC(RTC::Manager* manager)
     // <rtc-template block="initializer">
   : RTC::DataFlowComponentBase(manager),
-    m_inIn("in", m_in),  
+    m_inIn("in", m_in),
+    m_jointRIn("jointR", m_jointR),
+    m_jointLIn("jointL", m_jointL),
     m_cameraIn("camera", m_camera),
     m_manipMiddlePort("manipMiddle"),
     m_manipCommonPort("manipCommon")
@@ -62,8 +64,19 @@ RTC::ReturnCode_t DataCollectingRTC::onInitialize()
   // Registration: InPort/OutPort/Service
   // <rtc-template block="registration">
   // Set InPort buffers
+
+  //in=Photointerrupter
   addInPort("in", m_inIn);
+
+  //jointR=joint of migi
+  addInPort("jointR", m_jointRIn);
+
+  //jointL=joint of hidari
+  addInPort("jointL", m_jointLIn);
+
+  //camera=Webcamera
   addInPort("camera", m_cameraIn);
+
   
   // Set OutPort buffer
   
