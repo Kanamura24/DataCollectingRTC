@@ -308,6 +308,13 @@ class DataCollectingRTC
   // <rtc-template block="private_operation">
   
   // </rtc-template>
+  	 coil::TimeValue m_sleepTime;
+
+	 cv::Mat m_buffer;
+
+	 std::ofstream m_JointLog;
+
+	 std::string m_logDir;
 
 };
 
