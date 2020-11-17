@@ -1,6 +1,8 @@
 set(comp_srcs DataCollectingRTC.cpp )
 set(standalone_srcs DataCollectingRTCComp.cpp)
 
+find_package(OpenCV REQUIRED)
+
 if (DEFINED OPENRTM_INCLUDE_DIRS)
   string(REGEX REPLACE "-I" ";"
     OPENRTM_INCLUDE_DIRS "${OPENRTM_INCLUDE_DIRS}")
