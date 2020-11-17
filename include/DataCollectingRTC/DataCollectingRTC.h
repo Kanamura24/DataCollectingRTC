@@ -31,6 +31,7 @@
 
 // </rtc-template>
 
+#include <opencv2/opencv.hpp>
 // Service Consumer stub headers
 // <rtc-template block="port_stub_h">
 using namespace Img;
