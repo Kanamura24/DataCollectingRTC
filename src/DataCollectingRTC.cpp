@@ -271,21 +271,21 @@ RTC::ReturnCode_t DataCollectingRTC::onExecute(RTC::UniqueId ec_id)
     m_gripperOCIn.read();
   }
 
-    std::cout << "joint_R: "<< std::endl;
+  //std::cout << "joint_R: "<< std::endl;
     for(int i=0; i < m_jointR.data.length(); i++){
       m_JointLog << m_jointR.data[i] << ",";
     }
 
     m_JointLog << m_gripperOC.data[0] << ",";
 
-    std::cout << "joint_L: "<< std::endl;
+    //std::cout << "joint_L: "<< std::endl;
     for(int i=0; i < m_jointL.data.length(); i++){
       m_JointLog << m_jointL.data[i] << ",";
     }
 
     m_JointLog << m_gripperOC.data[1] << ",";
 
-    std::cout << "photointerrupta: "<< std::endl;
+    //std::cout << "photointerrupta: "<< std::endl;
     sum += m_in.data[0]*100;
     sum += m_in.data[3]*100;
     m_JointLog << sum << std::endl; 
