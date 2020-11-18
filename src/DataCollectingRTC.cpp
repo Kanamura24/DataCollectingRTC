@@ -260,12 +260,15 @@ RTC::ReturnCode_t DataCollectingRTC::onExecute(RTC::UniqueId ec_id)
    //long counter = 0;
 
   //Inport data check
-  while (m_inIn.isNew() && m_jointRIn.isNew() && m_jointLIn.isNew() && m_gripperOCIn.isNew() && (!jointArrived)) {
+  while (m_inIn.isNew() && m_jointRIn.isNew() && m_jointLIn.isNew() && (!jointArrived)) {
     m_inIn.read();
-    m_gripperOCIn.read();
     m_jointRIn.read();
     m_jointLIn.read();
     jointArrived = true;
+  }
+
+  if(m_gripperOCIn.isNew()){
+    m_gripperOCIn.read();
   }
 
     std::cout << "joint_R: "<< std::endl;
