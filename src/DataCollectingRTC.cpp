@@ -51,6 +51,7 @@ DataCollectingRTC::DataCollectingRTC(RTC::Manager* manager)
     // <rtc-template block="initializer">
   : RTC::DataFlowComponentBase(manager),
     m_inIn("in", m_in),
+    m_gripperOCIn("gripperOC", m_gripperOC),
     m_jointRIn("jointR", m_jointR),
     m_jointLIn("jointL", m_jointL),
     m_cameraIn("camera", m_camera),
@@ -79,6 +80,9 @@ RTC::ReturnCode_t DataCollectingRTC::onInitialize()
   //in=Photointerrupter
   addInPort("in", m_inIn);
 
+  //gripperOC=gripper open or close
+  addInPort("gripperOC", m_gripperOCIn);
+
   //jointR=joint of migi
   addInPort("jointR", m_jointRIn);
 
@@ -87,6 +91,7 @@ RTC::ReturnCode_t DataCollectingRTC::onInitialize()
 
   //camera=Webcamera
   addInPort("camera", m_cameraIn);
+
 
   
   // Set OutPort buffer
@@ -255,8 +260,9 @@ RTC::ReturnCode_t DataCollectingRTC::onExecute(RTC::UniqueId ec_id)
    //long counter = 0;
 
   //Inport data check
-  while (m_inIn.isNew() && m_jointRIn.isNew() && m_jointLIn.isNew() && (!jointArrived)) {
+  while (m_inIn.isNew() && m_jointRIn.isNew() && m_jointLIn.isNew() && m_gripperOCIn.isNew() && (!jointArrived)) {
     m_inIn.read();
+    m_gripperOCIn.read();
     m_jointRIn.read();
     m_jointLIn.read();
     jointArrived = true;
@@ -267,10 +273,14 @@ RTC::ReturnCode_t DataCollectingRTC::onExecute(RTC::UniqueId ec_id)
       m_JointLog << m_jointR.data[i] << ",";
     }
 
+    m_JointLog << m_gripperOC.data[0] << ",";
+
     std::cout << "joint_L: "<< std::endl;
     for(int i=0; i < m_jointL.data.length(); i++){
       m_JointLog << m_jointL.data[i] << ",";
     }
+
+    m_JointLog << m_gripperOC.data[1] << ",";
 
     std::cout << "photointerrupta: "<< std::endl;
     sum += m_in.data[0]*100;

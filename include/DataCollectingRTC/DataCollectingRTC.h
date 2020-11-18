@@ -246,16 +246,28 @@ class DataCollectingRTC
 
   // DataInPort declaration
   // <rtc-template block="inport_declare">
+  
+  //photointerrupta
   RTC::TimedFloatSeq m_in;
   /*!
    */
   InPort<RTC::TimedFloatSeq> m_inIn;
 
+  //gripper
+  RTC::TimedLongSeq m_gripperOC;
+  /*!
+   */
+  InPort<RTC::TimedLongSeq> m_gripperOCIn;
+
+
+  //migi
   RTC::TimedFloatSeq m_jointR;
   /*!
    */
   InPort<RTC::TimedFloatSeq> m_jointRIn;
 
+
+  //hidari
   RTC::TimedFloatSeq m_jointL;
   /*!
    */
