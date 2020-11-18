@@ -255,6 +255,21 @@ RTC::ReturnCode_t DataCollectingRTC::onExecute(RTC::UniqueId ec_id)
   }
   coil::sleep(2.0);
 
+  if(m_jointRIn.isNew()) {
+    m_jointRIn.read();
+    std::cout << "joint_R: "<< std::endl;
+    for(int i=0; i < m_jointR.data.length(); i++){
+      std::cout << m_jointR.data[i] << std::endl;
+    }
+  }
+
+  if(m_jointLIn.isNew()) {
+    m_jointLIn.read();
+    std::cout << "joint_L: "<< std::endl;
+    for(int i=0; i < m_jointL.data.length(); i++){
+      std::cout << m_jointL.data[i] << std::endl;
+    }
+  }
   m_JointLog.flush();
   
   return RTC::RTC_OK;
