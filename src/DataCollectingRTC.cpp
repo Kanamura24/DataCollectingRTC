@@ -251,15 +251,15 @@ RTC::ReturnCode_t DataCollectingRTC::onExecute(RTC::UniqueId ec_id)
 
   float sum = 0;
 
-  bool imageArrived = false;
+  bool jointArrived = false;
    //long counter = 0;
 
   //Inport data check
-  while (m_inIn.isNew() && m_jointRIn.isNew() && m_jointLIn.isNew() && (!imageArrived)) {
+  while (m_inIn.isNew() && m_jointRIn.isNew() && m_jointLIn.isNew() && (!jointArrived)) {
     m_inIn.read();
     m_jointRIn.read();
     m_jointLIn.read();
-    imageArrived = true;
+    jointArrived = true;
   }
 
     std::cout << "joint_R: "<< std::endl;
