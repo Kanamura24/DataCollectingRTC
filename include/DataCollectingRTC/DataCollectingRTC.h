@@ -315,6 +315,8 @@ class DataCollectingRTC
 
 	 std::ofstream m_JointLog;
 
+  	 std::ofstream m_ImgLog;
+
 	 std::string m_logDir;
 
 };

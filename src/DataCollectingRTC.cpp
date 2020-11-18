@@ -152,9 +152,13 @@ RTC::ReturnCode_t DataCollectingRTC::onActivated(RTC::UniqueId ec_id)
  	mkdir(m_logDir.c_str(), 0777);
  #endif
 
-  std::string filename = m_logDir + "/motion.csv";
-  m_JointLog.open(filename.c_str(), std::ios::out);
+  std::string filename_mtn = m_logDir + "/motion.csv";
+  m_JointLog.open(filename_mtn.c_str(), std::ios::out);
 
+  std::string filename_img = m_logDir + "/front_imglist.csv";
+  m_ImgLog.open(filename_img.c_str(), std::ios::out);
+
+  
 	
   return RTC::RTC_OK;
 }
@@ -243,33 +247,37 @@ RTC::ReturnCode_t DataCollectingRTC::onExecute(RTC::UniqueId ec_id)
   
 #endif  
 
-  m_JointLog << filename << std::endl;
+  m_ImgLog << filename << std::endl;
 
   float sum = 0;
 
-  if(m_inIn.isNew()) {
-    m_inIn.read();
-    sum += m_in.data[0]*100;
-    sum += m_in.data[3]*100;
-    std::cout << "Sum= " << sum << std::endl; 
-  }
-  coil::sleep(2.0);
+  bool imageArrived = false;
+   //long counter = 0;
 
-  if(m_jointRIn.isNew()) {
+  //Inport data check
+  while (m_inIn.isNew() && m_jointRIn.isNew() && m_jointLIn.isNew() && (!imageArrived)) {
+    m_inIn.read();
     m_jointRIn.read();
+    m_jointLIn.read();
+    imageArrived = true;
+  }
+
     std::cout << "joint_R: "<< std::endl;
     for(int i=0; i < m_jointR.data.length(); i++){
-      std::cout << m_jointR.data[i] << std::endl;
+      m_JointLog << m_jointR.data[i] << ",";
     }
-  }
 
-  if(m_jointLIn.isNew()) {
-    m_jointLIn.read();
     std::cout << "joint_L: "<< std::endl;
     for(int i=0; i < m_jointL.data.length(); i++){
-      std::cout << m_jointL.data[i] << std::endl;
+      m_JointLog << m_jointL.data[i] << ",";
     }
-  }
+
+    std::cout << "photointerrupta: "<< std::endl;
+    sum += m_in.data[0]*100;
+    sum += m_in.data[3]*100;
+    m_JointLog << sum << std::endl; 
+
+    
   m_JointLog.flush();
   
   return RTC::RTC_OK;
